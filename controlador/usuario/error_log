@@ -1,0 +1,46 @@
+[30-May-2019 05:09:01 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on boolean in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 13
+[30-May-2019 05:09:09 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on boolean in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 13
+[30-May-2019 05:09:09 America/New_York] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on boolean in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 13
+[30-May-2019 05:46:03 America/New_York] PHP Warning:  htmlspecialchars() expects parameter 1 to be string, array given in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 2
+[30-May-2019 05:46:03 America/New_York] PHP Notice:  Undefined index: usuario in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 3
+[30-May-2019 05:46:03 America/New_York] PHP Notice:  Undefined index: clave in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 4
+[30-May-2019 05:49:13 America/New_York] PHP Notice:  Undefined index: usuario in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 3
+[30-May-2019 05:49:13 America/New_York] PHP Notice:  Undefined index: clave in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 4
+[30-May-2019 05:49:13 America/New_York] PHP Notice:  Array to string conversion in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 11
+[30-May-2019 05:49:13 America/New_York] PHP Warning:  mail() expects parameter 1 to be string, array given in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 26
+[30-May-2019 05:50:48 America/New_York] PHP Notice:  Undefined index: usuario in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 3
+[30-May-2019 05:50:48 America/New_York] PHP Notice:  Undefined index: clave in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 4
+[30-May-2019 05:50:48 America/New_York] PHP Notice:  Array to string conversion in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 11
+[30-May-2019 05:53:59 America/New_York] PHP Notice:  Undefined index: usuario in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 3
+[30-May-2019 05:53:59 America/New_York] PHP Notice:  Undefined index: clave in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 4
+[30-May-2019 05:53:59 America/New_York] PHP Notice:  Array to string conversion in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 12
+[30-May-2019 05:53:59 America/New_York] PHP Warning:  mail() expects parameter 1 to be string, array given in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 28
+[30-May-2019 05:53:59 America/New_York] PHP Notice:  Array to string conversion in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 29
+[30-May-2019 05:55:13 America/New_York] PHP Notice:  Undefined index: usuario in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 3
+[30-May-2019 05:55:13 America/New_York] PHP Notice:  Undefined index: clave in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 4
+[30-May-2019 05:55:13 America/New_York] PHP Notice:  Array to string conversion in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 12
+[30-May-2019 05:55:13 America/New_York] PHP Warning:  mail() expects parameter 1 to be string, array given in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 28
+[30-May-2019 05:55:13 America/New_York] PHP Notice:  Array to string conversion in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 29
+[30-May-2019 06:08:28 America/New_York] PHP Warning:  A non-numeric value encountered in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 28
+[30-May-2019 06:08:28 America/New_York] PHP Warning:  A non-numeric value encountered in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_enviar_mensaje.php on line 28
+[30-May-2019 06:13:31 America/New_York] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/vipeicvc/public_html/sistema_recursos/modelo/modelo_usuario.php on line 57
+[30-May-2019 06:13:31 America/New_York] PHP Notice:  Array to string conversion in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_actualizar_clave.php on line 46
+[30-May-2019 06:17:04 America/New_York] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/vipeicvc/public_html/sistema_recursos/modelo/modelo_usuario.php on line 57
+[30-May-2019 06:17:04 America/New_York] PHP Notice:  Array to string conversion in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_actualizar_clave.php on line 46
+[30-May-2019 06:19:05 America/New_York] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home/vipeicvc/public_html/sistema_recursos/modelo/modelo_usuario.php on line 57
+[30-May-2019 06:19:05 America/New_York] PHP Notice:  Array to string conversion in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_actualizar_clave.php on line 46
+[30-May-2019 06:20:50 America/New_York] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/vipeicvc/public_html/sistema_recursos/modelo/modelo_usuario.php on line 56
+[30-May-2019 06:20:50 America/New_York] PHP Notice:  Array to string conversion in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_actualizar_clave.php on line 46
+[30-May-2019 06:28:06 America/New_York] PHP Notice:  Undefined variable: row1 in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_actualizar_clave.php on line 8
+[30-May-2019 06:28:06 America/New_York] PHP Notice:  Undefined variable: row1 in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_actualizar_clave.php on line 9
+[30-May-2019 06:29:37 America/New_York] PHP Notice:  Undefined variable: row1 in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_actualizar_clave.php on line 8
+[30-May-2019 06:29:37 America/New_York] PHP Notice:  Undefined variable: row1 in /home/vipeicvc/public_html/sistema_recursos/controlador/usuario/controlador_actualizar_clave.php on line 9
