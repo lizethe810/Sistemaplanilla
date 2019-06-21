@@ -4,20 +4,33 @@ function listar_cargo(){
     "ordering":false,
     "pageLength":10,
     "destroy":true,
-    "select":true,
     "ajax":{
       "method":"POST",
       "url":"../controlador/cargo/controlador_cargo_listar.php"
     },
     "columns":[
-        {"data":"cargo_codigo"},
+        {"defaultContent":""},
         {"data":"cargo_descripcion"},
-        {"data":"cargo_estatus"},
-        {"defaultContent":"<button style='font-size:13px;' type='button' class='editar btn btn-success'><span class='fa fa-edit'></span></button>"}
+		{"data":"cargo_estatus",
+		render: function (data, type, row ) {
+				if (data=='ACTIVO') {
+				  return "<span class='badge bg-green'>"+data+"</span>";
+				} else {
+				  return '<span class="badge bg-red">'+data+'</span>';                 
+				}
+			}
+		},
+		{"defaultContent":"<button style='font-size:13px;' type='button' class='editar btn btn-primary'><span class='fa fa-edit'></span></button>"}
     ],
-        "language":idioma_espanol
+		"language":idioma_espanol,
+		select: true
   });
-      obtener_dato_cargo("#tabla_cargo tbody",table);
+	  obtener_dato_cargo("#tabla_cargo tbody",table);
+	  table.on( 'order.dt search.dt', function () {
+		table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+			cell.innerHTML = i+1;
+		} );
+		}).draw();
 }
 var obtener_dato_cargo = function(tbody, table){
 
@@ -53,13 +66,17 @@ function Registrar_cargo(){
 	})
 	.done(function(resp){
 		if (resp > 0) {
-      $("#modal_registro_cargo").modal('hide');
-      swal("Datos correctamente, nuevo cargo registrado","","success")
-      .then ( ( value ) =>  {
-       $("#contenido_principal").load("cargo/vista_cargo_listar.php");
-       });
+			if (resp==1) {
+				$("#modal_registro_cargo").modal('hide');
+				swal("Datos correctamente, nuevo cargo registrado","","success")
+				.then ( ( value ) =>  {
+				 $("#contenido_principal").load("cargo/vista_cargo_listar.php");
+				 });				
+			}else {
+				swal("Lo sentimos, el cargo ya esta registrado2","","warning")				
+			}
 		}else{
-      swal("Lo sentimos, no se pudo completar registro","","error")
+  		    swal("Lo sentimos, no se pudo completar registro","","error")
 		}
 	})
 }
@@ -94,6 +111,9 @@ function Modificar_cargo(){
 }
 
 var idioma_espanol = {
+	select: {
+        rows: "%d fila seleccionada"
+      },
 	"sProcessing":     "Procesando...",
 	"sLengthMenu":     "Mostrar _MENU_ registros",
 	"sZeroRecords":    "No se encontraron resultados",

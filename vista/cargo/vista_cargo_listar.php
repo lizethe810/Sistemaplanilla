@@ -1,11 +1,11 @@
 <script type="text/javascript" src="js/console_cargo.js?rev=<?php echo time();?>"></script>
 <div class="row">
   <div class="col-lg-12">
-            <div class="box box-warning box-solid">
-              <div class="box-header with-border"  style="background-color:#ff4111;">
+        <div class="box box-solid box-primary">
+            <div class="box-header with-border"  style="background-color:#34495E;">
                 <h3 class="box-title">BUSCAR CARGO</h3>
                 <!-- /.box-tools -->
-              </div>
+            </div>
               <!-- /.box-header -->
               <div class="box-body">
                 <div class="form-group">
@@ -18,14 +18,14 @@
                       <div class="col-lg-2">
                         <button type="submit" class="btn btn-success  btn-danger" style="width:100%;" onclick="Abrirmodalregistro()"><span class="glyphicon glyphicon-plus"></span>&nbsp;Nuevo Registro</button>
                       </div>
-                  </div>
+                </div>
 
               </div>
 
               <!-- /.box-body -->
-            </div>
-            <div class="box box-warning box-solid">
-              <div class="box-header with-border"  style="background-color:#ff4111;">
+        </div>
+        <div class="box box-solid box-primary">
+              <div class="box-header with-border"  style="background-color:#34495E;">
                 <h3 class="box-title">LISTADO DE CARGOS</h3>
                 <!-- /.box-tools -->
               </div>
@@ -46,12 +46,12 @@
                      </div>
                   </div>
                </div>
-            </div>
+        </div>
   </div>
 </div>
 <!-- /.Inicio modal -->
-<div class="modal fade bs-example-modal-lg" id="modal_registro_cargo">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
+<div class="modal fade bs-example-modal-sm" id="modal_registro_cargo">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
      <div class="modal-content">
              <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -82,8 +82,8 @@
  <!-- /.Fin modal -->
 
  <!-- /.Inicio modal -->
- <div class="modal fade bs-example-modal-lg" id="modal_editar_cargo">
-   <div class="modal-dialog modal-lg modal-dialog-centered">
+ <div class="modal fade bs-example-modal-sm" id="modal_editar_cargo">
+   <div class="modal-dialog modal-sm modal-dialog-centered">
       <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">

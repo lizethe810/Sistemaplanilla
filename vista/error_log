@@ -510,3 +510,16 @@
 [14-Jun-2019 18:32:38 America/New_York] PHP Notice:  Undefined index: iduser in /home/vipeicvc/public_html/sistema_recursos/vista/index.php on line 183
 [14-Jun-2019 18:32:38 America/New_York] PHP Notice:  Undefined index: rol in /home/vipeicvc/public_html/sistema_recursos/vista/index.php on line 266
 [14-Jun-2019 18:32:38 America/New_York] PHP Notice:  Undefined index: usuario in /home/vipeicvc/public_html/sistema_recursos/vista/index.php on line 273
+[14-Jun-2019 18:46:57 America/New_York] PHP Notice:  Undefined index: tipo_usuario in /home/vipeicvc/public_html/sistema_recursos/vista/index.php on line 181
+[17-Jun-2019 12:31:23 America/New_York] PHP Notice:  Undefined index: iduser in /home/vipeicvc/public_html/sistema_recursos/vista/index.php on line 64
+[17-Jun-2019 12:31:23 America/New_York] PHP Notice:  Undefined index: usuario in /home/vipeicvc/public_html/sistema_recursos/vista/index.php on line 71
+[17-Jun-2019 12:31:23 America/New_York] PHP Notice:  Undefined index: usuario in /home/vipeicvc/public_html/sistema_recursos/vista/index.php on line 72
+[17-Jun-2019 12:31:23 America/New_York] PHP Notice:  Undefined index: rol in /home/vipeicvc/public_html/sistema_recursos/vista/index.php on line 81
+[17-Jun-2019 12:31:23 America/New_York] PHP Notice:  Undefined index: rol in /home/vipeicvc/public_html/sistema_recursos/vista/index.php on line 121
+[17-Jun-2019 12:31:23 America/New_York] PHP Notice:  Undefined index: rol in /home/vipeicvc/public_html/sistema_recursos/vista/index.php on line 128
+[17-Jun-2019 12:31:23 America/New_York] PHP Notice:  Undefined index: rol in /home/vipeicvc/public_html/sistema_recursos/vista/index.php on line 167
+[17-Jun-2019 12:31:23 America/New_York] PHP Notice:  Undefined index: tipo_usuario in /home/vipeicvc/public_html/sistema_recursos/vista/index.php on line 181
+[17-Jun-2019 12:31:23 America/New_York] PHP Notice:  Undefined index: usuario in /home/vipeicvc/public_html/sistema_recursos/vista/index.php on line 182
+[17-Jun-2019 12:31:23 America/New_York] PHP Notice:  Undefined index: iduser in /home/vipeicvc/public_html/sistema_recursos/vista/index.php on line 183
+[17-Jun-2019 12:31:23 America/New_York] PHP Notice:  Undefined index: rol in /home/vipeicvc/public_html/sistema_recursos/vista/index.php on line 266
+[17-Jun-2019 12:31:23 America/New_York] PHP Notice:  Undefined index: usuario in /home/vipeicvc/public_html/sistema_recursos/vista/index.php on line 273

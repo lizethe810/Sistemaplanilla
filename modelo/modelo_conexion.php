@@ -7,9 +7,9 @@
 		public $conexion;
 		public function __construct(){
 			$this->servidor = "localhost";
-			$this->usuario = "vipeicvc_sistema_RRHH";
-			$this->contrasena = "1234567890R";
-			$this->basedatos = "vipeicvc_recursoshumanos";
+			$this->usuario = "root";
+			$this->contrasena = "";
+			$this->basedatos = "planilla";
 		}
 		function conectar(){
 			$this->conexion = new mysqli($this->servidor,$this->usuario,$this->contrasena,$this->basedatos);

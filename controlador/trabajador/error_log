@@ -1,0 +1,1 @@
+[20-Jun-2019 01:22:46 America/Chicago] PHP Fatal error:  Cannot declare class Modelo_trabajador, because the name is already in use in /home/ruyer123/public_html/sistema_recursos/modelo/modelo_trabajador.php on line 2

@@ -35,7 +35,6 @@
 			if ($resultado = $this->conexion->conexion->query($sql)){
 				$id_retornado = mysqli_insert_id($this->conexion->conexion);
 				return 1;
-				
 			}
 			else{
 				return 0;
@@ -59,7 +58,7 @@
 			if ($resultado = $this->conexion->conexion->query($sql)){
 				$id_retornado = mysqli_insert_id($this->conexion->conexion);
 				if ($row = mysqli_fetch_array($resultado)){
-				return $id_usuario = trim($row[0]);
+					return $id_usuario = trim($row[0]);
 				}
 			}
 			else{
@@ -83,13 +82,47 @@
 			if ($resultado = $this->conexion->conexion->query($sql)){
 				$id_retornado = mysqli_insert_id($this->conexion->conexion);
 				return 1;
-				
 			}
 			else{
 				return 0;
 			}
 			$this->conexion->Cerrar_Conexion();
 		}
+		function Editar_datos_trabajador($id_trabajador,$txt_nombre,$txt_apepat,$txt_apemat,$rad_sexo,$txt_fechanacimi){
+			$sql = "call PA_EDITARDATOSTRABAJADOR('$id_trabajador','$txt_nombre','$txt_apepat','$txt_apemat','$rad_sexo','$txt_fechanacimi')";
+			if ($resultado = $this->conexion->conexion->query($sql)){
+				$id_retornado = mysqli_insert_id($this->conexion->conexion);
+				return 1;
+			}
+			else{
+				return 0;
+			}
+			$this->conexion->Cerrar_Conexion();
+		}
+		function buscar_documento_identidad($buscar){
+			$sql = "call PA_BUSCARDOCUMENTOIDENTIDAD('$buscar')";	
+			$arreglo = array();
+			if ($consulta = $this->conexion->conexion->query($sql)) {
 
+				while ($consulta_VU = mysqli_fetch_array($consulta)) {
+					$arreglo[] = $consulta_VU;
+				}
+				return $arreglo;
+				$this->conexion->cerrar();	
+			}
+		}
+		function Registrar_datos_trabajador($txt_nombre,$txt_apepat,$txt_apemat,$rad_sexo,$txt_fechanacimi){
+			$sql = "call PA_REGISTRARDATOSTRABAJADOR('$txt_nombre','$txt_apepat','$txt_apemat','$rad_sexo','$txt_fechanacimi')";
+			if ($resultado = $this->conexion->conexion->query($sql)){
+				$id_retornado = mysqli_insert_id($this->conexion->conexion);
+				if ($row = mysqli_fetch_array($resultado)){
+					return $id = trim($row[0]);
+				}
+			}
+			else{
+				return 0;
+			}
+			$this->conexion->Cerrar_Conexion();
+		}
 	}
 ?>

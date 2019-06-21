@@ -1,8 +1,8 @@
 <script type="text/javascript" src="js/console_seguro.js?rev=<?php echo time();?>"></script>
 <div class="row">
   <div class="col-lg-12">
-            <div class="box box-warning box-solid">
-              <div class="box-header with-border"  style="background-color:#ff4111;">
+      <div class="box box-solid box-primary">
+            <div class="box-header with-border"  style="background-color:#34495E;">
                 <h3 class="box-title">BUSCAR SEGURO</h3>
                 <!-- /.box-tools -->
               </div>
@@ -24,8 +24,8 @@
 
               <!-- /.box-body -->
             </div>
-            <div class="box box-warning box-solid">
-              <div class="box-header with-border"  style="background-color:#ff4111;">
+        <div class="box box-solid box-primary">
+            <div class="box-header with-border"  style="background-color:#34495E;">
                 <h3 class="box-title">LISTADO DE SEGUROS</h3>
                 <!-- /.box-tools -->
               </div>
@@ -46,12 +46,12 @@
                      </div>
                   </div>
                </div>
-            </div>
+         </div>
   </div>
 </div>
 <!-- /.Inicio modal -->
-<div class="modal fade bs-example-modal-lg" id="modal_registro_seguro">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
+<div class="modal fade bs-example-modal-sm" id="modal_registro_seguro">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
      <div class="modal-content">
              <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -82,8 +82,8 @@
  <!-- /.Fin modal -->
 
  <!-- /.Inicio modal -->
- <div class="modal fade bs-example-modal-lg" id="modal_editar_seguro">
-   <div class="modal-dialog modal-lg modal-dialog-centered">
+ <div class="modal fade bs-example-modal-sm" id="modal_editar_seguro">
+   <div class="modal-dialog modal-sm modal-dialog-centered">
       <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">

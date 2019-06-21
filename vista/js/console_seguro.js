@@ -4,20 +4,33 @@ function listar_seguro(){
     "ordering":false,
     "pageLength":10,
     "destroy":true,
-    "select":true,
     "ajax":{
       "method":"POST",
       "url":"../controlador/seguro/controlador_seguro_listar.php"
     },
     "columns":[
-        {"data":"seguro_id"},
+        {"defaultContent":""},
         {"data":"seguro_descripcion"},
-        {"data":"seguro_estatus"},
-        {"defaultContent":"<button style='font-size:13px;' type='button' class='editar btn btn-success'><span class='fa fa-edit'></span></button>"}
+		{"data":"seguro_estatus",
+		render: function (data, type, row ) {
+				if (data=='ACTIVO') {
+				  return "<span class='badge bg-green'>"+data+"</span>";
+				} else {
+				  return '<span class="badge bg-red">'+data+'</span>';                 
+				}
+			}
+		},
+		{"defaultContent":"<button style='font-size:13px;' type='button' class='editar btn btn-primary'><span class='fa fa-edit'></span></button>"}
     ],
-    "language":idioma_espanol
+	"language":idioma_espanol,
+	select: true
   });
-      obtener_dato_seguro("#tabla_seguro tbody",table);
+	  obtener_dato_seguro("#tabla_seguro tbody",table);
+	  table.on( 'order.dt search.dt', function () {
+		table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+			cell.innerHTML = i+1;
+		} );
+		}).draw();
 }
 
 var obtener_dato_seguro = function(tbody, table){
@@ -53,12 +66,17 @@ function Registrar_seguro(){
 		}
 	})
 	.done(function(resp){
+		
 		if (resp > 0) {
-      $("#modal_registro_seguro").modal('hide');
-      swal("Datos correctamente, nuevo seguro registrado","","success")
-      .then ( ( value ) =>  {
-       $("#contenido_principal").load("seguro/vista_seguro_listar.php");
-       });
+			if (resp==1) {
+				$("#modal_editar_seguro").modal('hide');
+				swal("Datos correctamente, seguro registrado","","success")
+				.then ( ( value ) =>  {
+				$("#contenido_principal").load("seguro/vista_seguro_listar.php");
+				   });				
+			} else {
+				swal("Lo sentimos, el seguro ya esta registrado","","warning")				
+			}
 		}else{
       swal("Lo sentimos, no se pudo completar registro","","error")
 		}
@@ -83,10 +101,10 @@ function Modificar_seguro(){
 	})
 	.done(function(resp){
 		if (resp > 0) {
-      $("#modal_editar_seguro").modal('hide');
-      swal("Datos correctamente modificados","","success")
-      .then ( ( value ) =>  {
-       $("#contenido_principal").load("seguro/vista_seguro_listar.php");
+			$("#modal_editar_seguro").modal('hide');
+			swal("Datos correctamente modificados","","success")
+			.then ( ( value ) =>  {
+			$("#contenido_principal").load("seguro/vista_seguro_listar.php");
        });
 		}else{
       swal("Lo sentimos, no se pudo completar la modificacion","","error")
@@ -95,6 +113,9 @@ function Modificar_seguro(){
 }
 
 var idioma_espanol = {
+	select: {
+        rows: "%d fila seleccionada"
+    },
 	"sProcessing":     "Procesando...",
 	"sLengthMenu":     "Mostrar _MENU_ registros",
 	"sZeroRecords":    "No se encontraron resultados",

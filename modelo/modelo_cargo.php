@@ -38,12 +38,9 @@
 		function Registrar_cargo($cargo,$estatus){
 			$sql = "call SP_CARGO_REGISTRO('$cargo','$estatus')";
 			if ($resultado = $this->conexion->conexion->query($sql)){
-				if ($resultado=="1") {
-					return 1;
-				}else{
-					if ($row = mysqli_fetch_array($resultado)){
-						return $id_usuario = trim($row[0]);
-					}
+				$id_retornado = mysqli_insert_id($this->conexion->conexion);
+				if ($row = mysqli_fetch_array($resultado)){
+				return $id_usuario = trim($row[0]);
 				}
 			}
 			else{

@@ -1,43 +1,31 @@
 <script type="text/javascript" src="js/console_trabajador.js?rev=<?php echo time();?>"></script>
 <div class="row">
   <div class="col-lg-12">
-    <div class="box box-warning box-solid">
-      <div class="box-header with-border"  style="background-color:#ff4111;">
+    <div class="box box-primary box-solid">
+      <div class="box-header with-border"  style="background-color:#34495E;">
         <h3 class="box-title">BUSCAR TRABAJADOR</h3>
       </div>
       <div class="box-body">
         <div class="form-group">
-          <div class="col-lg-12">
+          <div class="col-lg-10">
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Ingresar datos trabajador" id="txtbuscar">
               <span class="input-group-addon"><i class="fa fa-search"></i></span>
             </div>
           </div>
+          <div class="col-lg-2">
+            <button class="btn btn-success  btn-danger" style="width:100%;" onclick="cargar_contenido('contenido_principal','trabajador/vista_trabajador_registro.php')"><span class="glyphicon glyphicon-plus"></span><b>&nbsp;Nuevo Registro</b></button>
+          </div>
         </div>
       </div>
     </div>
-    <div class="box box-warning box-solid">
-      <div class="box-header with-border"  style="background-color:#ff4111;">
+    <div class="box box-primary box-solid">
+      <div class="box-header with-border"  style="background-color:#34495E;">
         <h3 class="box-title">LISTADO DE TRABAJADORES</h3>
       </div>
       <div class="box-body" style="text-align:left;">
         <div class="table-responsive" style="color:#000000;font-size:13px;" >
           <div class="col-md-12">
-           <!-- <table table id="tabla_trabajador" class="display dataTable" style="width: 100%;" role="grid" aria-describedby="example_info">
-              <thead >
-                <tr role="row" class="odd">
-                  <th style="text-align: center;width: 80px;word-wrap: break-word;">Nro</th>
-                  <th style="text-align: left;width: 300px;word-wrap: break-word;">TRABAJADOR</th>
-                  <th style="text-align: center;width: 80px;word-wrap: break-word;">SEXO</th>
-                  <th style="text-align: center;width: 150px;word-wrap: break-word;">FECHA NACI.</th>
-                  <th style="text-align: left;width: 100px;word-wrap: break-word;">E-MAIL PRINCIPAL</th>
-                  <th style="text-align: left;width: 100px;word-wrap: break-word;">TELEFONO PRINCIPAL</th>
-                  <th style="text-align: center;width: 100px;word-wrap: break-word;">MEDIOS DE COMUNICACIÓN</th>
-                  <th style="text-align: center;width: 100px;word-wrap: break-word;">DOCUMENTOS DE IDENTIDAD</th>
-                  <th style="text-align: center;width: 80px;word-wrap: break-word;">ACCI&Oacute;N</th>
-                </tr>
-              </thead>
-            </table>-->
             <div id="div_tabla_trabajador"></div>
           </div>
         </div>
@@ -45,80 +33,6 @@
     </div>
   </div>
 </div>
-<!-- /.Inicio modal -->
-<div class="modal fade bs-example-modal-lg" id="modal_editar">
-         <div class="modal-dialog modal-lg modal-dialog-centered">
-           <div class="modal-content">
-             <div class="modal-header">
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                 <span aria-hidden="true">&times;</span></button>
-               <h4 class="modal-title"><label>CAMBIAR CONTRASEÑA</h4>
-             </div>
-             <div class="modal-body">
-                 <div class="box-body">
-                       <div class="form-group">
-                             <input type="text" id="txtidusuario" hidden="true">
-                             <div class="col-lg-12">
-                                 <label>NOMBRE:</label>
-                                 <div class="input-group">
-                                   <div class="input-group-addon">
-                                     <i class="glyphicon glyphicon-sort-by-alphabet"></i>
-                                   </div>
-                                   <input type="text" class="form-control"  disabled style="color: rgb(25,25,51); background-color: rgb(255,255,255);solid 5px;" id="txtnombre" onkeypress="return soloLetras(event)" maxlength="50">
-                                 </div>
-                                 <br>
-                             </div>
-                             <div class="col-lg-12">
-                               <label>USUARIO:</label>
-                               <div class="input-group">
-                                 <div class="input-group-addon">
-                                   <i class="glyphicon glyphicon-user"></i>
-                                 </div>
-                                 <input type="text" class="form-control"  disabled style="color: rgb(25,25,51); background-color: rgb(255,255,255);solid 5px;" id="txtusuario" onkeypress="return soloLetras(event)" maxlength="50">
-                               </div>
-                               <br>
-                             </div>
-                             <div class="col-lg-12">
-                                 <label style="color:#000000;">DEPARTAMENTO:</label>
-                                 <select class="js-example-basic-single" name="state" id="combo_departamento" style="width:100%;height:50px;">
-                                 </select>
-                             </div>
-                             <div class="col-lg-12">
-                                <br>
-                             		<label>CONTRASEÑA:</label>
-                                 <div class="input-group">
-                                   <div class="input-group-addon">
-                                     <i class="fa fa-unlock-alt"></i>
-                                   </div>
-                                   <input type="password" class="form-control"   style="color: rgb(25,25,51); background-color: rgb(255,255,255);solid 5px;" id="txtcontra1" maxlength="15" placeholder="Ingresar contraseña">
-                                 </div>
-                             		<br>
-                             </div>
-                             <div class="col-lg-12">
-                             		<label>CONFIRMAR CONTRASEÑA:</label>
-                                 <div class="input-group">
-                                   <div class="input-group-addon">
-                                     <i class="fa fa-unlock-alt"></i>
-                                   </div>
-                                   <input type="password" class="form-control"   style="color: rgb(25,25,51); background-color: rgb(255,255,255);solid 5px;" id="txtcontra2" maxlength="15" placeholder="Ingresar contraseña">
-                                 </div>
-                             		<br>
-                             </div>
-                       </div>
-
-                 </div>
-              </div>
-
-             <div class="modal-footer">
-               <button  class="btn btn-danger" onclick="Modificar_Usuario_Empresa()"><i class="fa fa-check"></i>&nbsp;<b>MODIFICAR DATOS</b></button>&nbsp;&nbsp;&nbsp;
-               <button type="button" class="btn btn-success pull-right" data-dismiss="modal"><i class="fa fa-close"></i><b> CLOSE</b></button>
-             </div>
-           </div>
-           <!-- /.modal-content -->
-         </div>
-         <!-- /.modal-dialog -->
-</div>
- <!-- /.Buscar dato -->
 <script type="text/javascript">
 listar_trabajador('');
 $("#txtbuscar").keyup(function(){
@@ -143,7 +57,7 @@ $('#modal_editar').on('shown.bs.modal', function () {
              <div class="form-group">
                 <input type="text" id="txttrabajador1" hidden="true">
                 <div class="col-lg-4">
-                  <label>DESCRIPCIÓN:</label>
+                  <label>Descripción:</label>
                   <div class="input-group">
                     <div class="input-group-addon">
                       <i class="fa fa-sort-alpha-asc"></i>
@@ -152,30 +66,30 @@ $('#modal_editar').on('shown.bs.modal', function () {
                   </div>
                 </div>
                 <div class="col-lg-2">
-                  <label>TIPO</label>
+                  <label>Tipo:</label>
                   <select id="cbm_tipo" style="width: 100%" class="form-control select2">
                     <option>Correo</option>
                     <option>Telefono</option>
                   </select>
                 </div>
                 <div class="col-md-3">
-                      <label><b>NIVEL</b></label>
-                      <div class="form-group">
-                        <div class="col-lg-6">
-                          <label style="font-size: 13px;font-weight: normal;">
-                            <input type="radio" name="pr1" id="combo_nivel" style="" value="P" class="flat-red prt1" >
-                            Principal
-                          </label>
-                        </div>
-                        <div class="col-lg-6">
-                          <label style="font-size: 13px;font-weight: normal;">
-                            <input type="radio" name="pr1" id="combo_nivel" style="" value="S" class="flat-red prt2" checked>
-                            Secundario
-                          </label>
-                        </div>
-                      </div>
-                      <br>
+                  <label><b>Nivel</b></label>
+                  <div class="form-group">
+                    <div class="col-lg-6">
+                      <label style="font-size: 13px;font-weight: normal;">
+                        <input type="radio" name="pr1" id="combo_nivel" style="" value="P" class="flat-red prt1" >
+                        Principal
+                      </label>
+                    </div>
+                    <div class="col-lg-6">
+                      <label style="font-size: 13px;font-weight: normal;">
+                        <input type="radio" name="pr1" id="combo_nivel" style="" value="S" class="flat-red prt2" checked>
+                        Secundario
+                      </label>
+                    </div>
                   </div>
+                  <br>
+                </div>
                  <div class="col-lg-3" style="padding-left: 2px;">
                     <label>&nbsp;</label>
                     <button type="button" class="btn btn-primary" onclick="registrar_medio_comunicacion()" name="button" style="width:100%;"><i class="fa fa-fw fa-search"></i><b>AGREGAR</b></button><br>
@@ -216,7 +130,7 @@ $('#modal_editar').on('shown.bs.modal', function () {
              <div class="form-group">
                 <input type="text" id="txttrabajador2" hidden="true">
                 <div class="col-lg-6">
-                  <label>DESCRIPCIÓN:</label>
+                  <label>Descripción:</label>
                   <div class="input-group">
                     <div class="input-group-addon">
                       <i class="fa fa-sort-alpha-asc"></i>
@@ -225,7 +139,7 @@ $('#modal_editar').on('shown.bs.modal', function () {
                   </div>
                 </div>
                 <div class="col-lg-3">
-                  <label>TIPO</label>
+                  <label>Tipo:</label>
                   <select id="cbm_tipo_documento" style="width: 100%" class="form-control select2">
                     <option>DNI</option>
                     <option>PASAPORTE</option>
@@ -258,11 +172,109 @@ $('#modal_editar').on('shown.bs.modal', function () {
      </div>
   </div>
 </div>
-
+<div class="modal fade bs-example-modal-lg" id="modal_ver_datos_trabajador">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+     <div class="modal-content">
+        <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span></button>
+         <h4 class="modal-title"><label>EDITAR DATOS DE : <label id="lb_trabajador3"></label></h4>
+        </div>
+        <div class="modal-body">
+           <div class="box-body">
+             <div class="form-group">
+                <input type="text" id="txttrabajador3" hidden="true">
+                <div class="col-lg-12">
+                  <label>Nombre:</label>
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="fa fa-sort-alpha-asc"></i>
+                    </div>
+                    <input type="text" class="form-control" name="txtnombre"  style="color: rgb(25,25,51); background-color: rgb(255,255,255);solid 5px;" id="txtnombre" maxlength="150" placeholder="Ingresar nombre del empleado">
+                  </div><br>
+                </div>
+                <div class="col-lg-6">
+                  <label>Apellido Paterno:</label>
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="fa fa-sort-alpha-asc"></i>
+                    </div>
+                    <input type="text" class="form-control" name="txtapepat"  style="color: rgb(25,25,51); background-color: rgb(255,255,255);solid 5px;" id="txtapepat" maxlength="150" placeholder="Ingresar apellido paterno">
+                  </div><br>
+                </div>
+                <div class="col-lg-6">
+                  <label>Apellido Materno:</label>
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="fa fa-sort-alpha-asc"></i>
+                    </div>
+                    <input type="text" class="form-control" name="txtapemat"  style="color: rgb(25,25,51); background-color: rgb(255,255,255);solid 5px;" id="txtapemat" maxlength="150" placeholder="Ingresar apellido materno">
+                  </div><br>
+                </div>
+                <div class="col-lg-6">
+                  <label><b>Sexo:</b></label>
+                  <div class="form-group">
+                    <div class="col-lg-6">
+                      <label style="font-size: 13px;font-weight: normal;">
+                        <input type="radio" name="sex" id="rad_sexo" style="" value="M" class="flat-red sexM" >
+                        Masculino
+                      </label>
+                    </div>
+                    <div class="col-lg-6">
+                      <label style="font-size: 13px;font-weight: normal;">
+                        <input type="radio" name="sex" id="rad_sexo" style="" value="F" class="flat-red sexF" checked>
+                        Femenimo
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <label><b>Fecha Nacimiento:</b></label>
+                  <div class="form-group">
+                    <div class="input-group date">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" class="form-control pull-right" id="txtfecha_nacimiento">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <label>E-mail Principal:</label>
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      @
+                    </div>
+                    <input type="text" class="form-control" name="txtemail" disabled="" style="color: rgb(25,25,51); background-color: rgb(255,255,255);solid 5px;color:#9B0000; text-align:center;font-weight: bold;" id="txtemail" maxlength="150" placeholder="Ingresar email del empleado">
+                  </div><br>
+                </div>
+                <div class="col-lg-6">
+                  <label>Telefono Principal:</label>
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="glyphicon glyphicon-phone"></i>
+                    </div>
+                    <input type="text" class="form-control" name="txttelefono" disabled="" style="color: rgb(25,25,51); background-color: rgb(255,255,255);solid 5px;color:#9B0000; text-align:center;font-weight: bold;" id="txttelefono" maxlength="150" placeholder="Ingresar nro telefonico">
+                  </div><br>
+                </div>
+             </div>
+           </div>
+        </div>
+        <div class="modal-footer">
+          <button  class="btn btn-danger" onclick="Editar_datos_trabajador()"><i class="fa fa-check"></i>&nbsp;<b>MODIFICAR DATOS</b></button>&nbsp;&nbsp;&nbsp;
+          <button type="button" class="btn btn-success pull-right" data-dismiss="modal"><i class="fa fa-close"></i><b> CLOSE</b></button>
+        </div>
+     </div>
+  </div>
+</div>
 <script type="text/javascript">
   $('.select2').select2();
   $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
       checkboxClass: 'icheckbox_flat-green',
       radioClass   : 'iradio_flat-orange'
-    })
+  })
+  $("#txtfecha_nacimiento").datepicker({
+    autoclose:true,
+    todayHighlight: true,
+  });
 </script>

@@ -28,9 +28,10 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="../plugins/iCheck/all.css">
   <link rel="stylesheet" href="Plantilla/timepicker/bootstrap-timepicker.min.css?rev=<?php echo time();?>">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+  <link rel="stylesheet" href="Plantilla/calendario/css/bootstrap-material-datetimepicker.css"/>
   <script src="../plugins/bootstrap-checkbox-1.5.0/dist/js/bootstrap-checkbox.js" defer></script>
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
+  <link rel="stylesheet" type="text/css" href="Plantilla/DataTables/datatables.min.css"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <style type="text/css">
     .sidebar-mini.sidebar-collapse .main-header .logo {
     }
@@ -151,15 +152,18 @@
             </li>
              <li class="treeview">
               <a href="#">
-                <i class="glyphicon glyphicon-list-alt"></i> <span>MATENIMIENTO</span>
+                <i class="glyphicon glyphicon-list-alt"></i> <span>MANTENIMIENTO</span>
                 <span class="pull-right-container">
                       <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
               <ul  class="treeview-menu">
-                <li><a href="#" onclick="cargar_contenido('contenido_principal','trabajador/vista_trabajador_listar.php')"><i class="fa fa-chevron-circle-right"></i>TRABAJADORES</a>            
-                <li><a href="#" onclick="cargar_contenido('contenido_principal','cargo/vista_cargo_listar.php')"><i class="fa fa-chevron-circle-right"></i>CARGO</a></li>
-                <li><a href="#" onclick="cargar_contenido('contenido_principal','seguro/vista_seguro_listar.php')"><i class="fa fa-chevron-circle-right"></i>SEGURO</a></li>
+                <li><a href="#" onclick="cargar_contenido('contenido_principal','trabajador/vista_trabajador_listar.php')"><i class="fa fa-chevron-circle-right"></i>Trabajadores</a>  
+                <li><a href="#" onclick="cargar_contenido('contenido_principal','familiar/vista_familiar_listar.php')"><i class="fa fa-chevron-circle-right"></i>Familiar</a>      
+                <li><a href="#" onclick="cargar_contenido('contenido_principal','cargo/vista_cargo_listar.php')"><i class="fa fa-chevron-circle-right"></i>Cargo</a></li>
+                <li><a href="#" onclick="cargar_contenido('contenido_principal','seguro/vista_seguro_listar.php')"><i class="fa fa-chevron-circle-right"></i>Seguro</a></li>
+                <li><a href="#" onclick="cargar_contenido('contenido_principal','area/vista_area_listar.php')"><i class="fa fa-chevron-circle-right"></i>&Aacute;rea</a></li>     
+                <li><a href="#" onclick="cargar_contenido('contenido_principal','tipo_contrato/vista_tipo_contrato_listar.php')"><i class="fa fa-chevron-circle-right"></i>Tipo Contrato</a></li>                                
                </ul>
             </li>           
             <?php
@@ -210,7 +214,7 @@
 
     <footer class="main-footer">
       <div class="pull-right hidden-xs">
-        - <b> Resolución MTC : 035-2019-mtc/27 </b> -
+        - <b>  </b> -
       </div>
       <strong> ® Todos los derechos reservados <?php echo date("Y");  ?> - <label> - Versión 3.00 </label> </strong>
     </footer>
@@ -233,12 +237,14 @@
     <div class="control-sidebar-bg"></div>
   </div>
   <script src="Plantilla/boostrap/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="Plantilla/calendario/js/moment-with-locales.min.js"></script>
+  <script type="text/javascript" src="Plantilla/calendario/js/bootstrap-material-datetimepicker.js"></script>
   <script src="Plantilla/boostrap/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="Plantilla/boostrap/jquery-slimscroll/jquery.slimscroll.min.js"></script>
   <script src="Plantilla/boostrap/fastclick/lib/fastclick.js"></script>
   <script src="Plantilla/boostrap/dist/js/adminlte.min.js"></script>
   <script src="Plantilla/boostrap/dist/js/demo.js"></script>
-
+  <script type="text/javascript" src="Plantilla/DataTables/datatables.min.js"></script>
   <script type="text/javascript" src="Plantilla/componentes/js/sweetalert.min.js"></script>
   <script src="Plantilla/input-file/js/bootstrap-uploader/file-upload.js"></script>
   <script src="Plantilla/boostrap/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
@@ -472,14 +478,7 @@ input:focus:invalid {
         .modal-open .select2-container--open { z-index: 999999 !important; width:100% !important; }
 </style>
 <script src="Plantilla/select2/dist/js/select2.full.min.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+
 <script src="Plantilla/timepicker/bootstrap-timepicker.min.js?rev=<?php echo time();?>"></script>
 <script src="../plugins/iCheck/icheck.min.js"></script>
 </body>

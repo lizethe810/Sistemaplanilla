@@ -180,9 +180,21 @@ var obtener_dato_editar_documento_identidad = function(tbody, table){
 var obtener_dato_editar_datos_trabajador = function(tbody, table){
   	$(tbody).on("click", "button.editar_datostrabajador", function(){
 		var data       = table.row( $(this).parents("tr")).data();
-		//$('#lb_trabajador2').html(data.empleado);
-		//Editar_documento_identidad(data.trabajador_cod);
-		swal("Opcion en Mantenimiento","","info");
+		$('#lb_trabajador3').html(data.empleado);
+		$('#txttrabajador3').val(data.trabajador_cod);
+		$('#txtnombre').val(data.trab_nombre);
+		$('#txtapepat').val(data.trab_apellidopate);
+		$('#txtapemat').val(data.trab_apellidomate);
+		if (data.trab_sexo=="F") {
+			$(".sexF"). iCheck ('check');
+		}else{
+			$(".sexM"). iCheck ('check');
+		}
+		$('#txtfecha_nacimiento').val(data.trab_fechanacimiento);
+		$('#txtemail').val(data.trab_email);
+		$('#txttelefono').val(data.trab_telefono);
+		$('#modal_ver_datos_trabajador').modal({backdrop: 'static', keyboard: false})
+		$("#modal_ver_datos_trabajador").modal("show");
 	});
 }
 function Editar_medio_comunicacion(trabajador_cod) {
@@ -285,16 +297,21 @@ function registrar_medio_comunicacion(){
 		}
 	})
 	.done(function(resp){
-		var dato_buscar = $("#txtbuscar").val();
-		var table = $('#tabla_trabajador').DataTable();
-		table.destroy();
-  		listar_trabajador(dato_buscar);
-		Editar_medio_comunicacion(trabajador_cod);
-	    if (resp > 0) {
-	      	swal("Medio de comunicacion registrado con exito","","success");
-	    }else{
-	    	swal("No se pudo registrar el nuevo medio de comunicacion","","error");
-	    }
+	    if (resp==1) {
+	    	var dato_buscar = $("#txtbuscar").val();
+			var table = $('#tabla_trabajador').DataTable();
+			table.destroy();
+	  		listar_trabajador(dato_buscar);
+			Editar_medio_comunicacion(trabajador_cod);
+			$("#txtrazonsocial").val("");
+			swal("El "+tipo+"fue  registrado con exito","","success");
+		}else{
+			if (resp==2)  {
+				swal("El "+ tipo +" ingresado ya se encuentra registrado en nuestra data","","error");
+			}else{
+				swal("No se pudo registrar el nuevo "+tipo,"","error");
+			}
+		}
 	})
 }
 function validar_email(email) {
@@ -424,10 +441,10 @@ function registrar_documento_identidad(){
 		}
 	})
 	.done(function(resp){
-		var dato_buscar = $("#txtbuscar").val();
-  		listar_trabajador(dato_buscar);
-		Editar_documento_identidad(trabajador_cod);
 	    if (resp==1) {
+	    	var dato_buscar = $("#txtbuscar").val();
+	  		listar_trabajador(dato_buscar);
+			Editar_documento_identidad(trabajador_cod);
 			$("#txtdni").val("");
 			swal("Documento de identidad registrado con exito!","","success");
 		}else{
@@ -437,5 +454,237 @@ function registrar_documento_identidad(){
 				swal("No se pudo registrar el Documento de identidad !","","error");
 			}
 		}
+	})
+}
+function Editar_datos_trabajador(){
+	var txt_idtrabajador = $('#txttrabajador3').val();
+	var txt_nombre       = $('#txtnombre').val();
+	var txt_apepat       = $('#txtapepat').val();
+	var txt_apemat       = $('#txtapemat').val();
+	var rad_sexo ="";
+	var porsexo=document.getElementsByName("sex");
+    for(var i=0;i<porsexo.length;i++){
+        if(porsexo[i].checked)
+            rad_sexo=porsexo[i].value;
+    }
+	var txt_fechanacimi  = $('#txtfecha_nacimiento').val();
+	$.ajax({
+		url:'../controlador/trabajador/controlador_editar_datos_trabajador.php',
+		type:'POST',
+		data:{
+			txt_idtrabajador:txt_idtrabajador,
+			txt_nombre:txt_nombre,
+			txt_apepat:txt_apepat,
+			txt_apemat:txt_apemat,
+			rad_sexo:rad_sexo,
+			txt_fechanacimi:txt_fechanacimi
+		}
+	})
+	.done(function(resp){
+		var dato_buscar = $("#txtbuscar").val();
+		var table = $('#tabla_trabajador').DataTable();
+		table.destroy();
+		$("#modal_ver_datos_trabajador").modal("hide");
+  		listar_trabajador(dato_buscar);
+	    if (resp > 0) {
+	      	swal("Datos actualizados con exito","","success");
+	    }else{
+	    	swal("No se pudo actualizar los datos","","error");
+	    }
+	})
+}
+function agregar_medio_comunicacion(){
+	var medio = $("#txtrazonsocial").val();
+	var tipo  = $("#cbm_tipo").val();
+	var nivel    = "";
+	var pornivel=document.getElementsByName("pr1");
+    for(var i=0;i<pornivel.length;i++){
+        if(pornivel[i].checked)
+            nivel=pornivel[i].value;
+    }
+    if (medio.length==0) {
+    	return swal("Falta llenar el medio de comunicacion","","info");
+    }
+    if (tipo=="Correo") {
+	    if (validar_email(medio)) {
+		}else{
+			return swal("Lo sentimos, formato de email del remitente no es valido.","", "error");
+		}
+	}
+    var arreglo_nivel = new Array();
+	var arreglo_tipo = new Array();
+	$("#tabla_mediocomunicacion tbody#tbody_tabla_medio_comunicacion tr").each(function(){
+	 	arreglo_tipo.push($(this).find('td').eq(1).text());
+	 	arreglo_nivel.push($(this).find('td').eq(2).text());
+ 	})
+ 	var cont_correo = 0;
+ 	var cont_telefono = 0;
+ 	for (var i = 0; i < arreglo_nivel.length; i++) {
+ 		if(arreglo_tipo[i] == "Correo"){
+ 			if (arreglo_nivel[i]=="P") {
+ 				cont_correo=1;
+ 			}
+ 		}
+ 		if(arreglo_tipo[i] == "Telefono"){
+ 			if (arreglo_nivel[i]=="P") {
+ 				cont_telefono=1;
+ 			}
+ 		}
+ 	}
+ 	if (tipo=="Correo") {
+ 		if (nivel=="P") {
+ 			if (cont_correo==1) {
+ 				return swal("Lo sentimos ya fue definido un correo principal","","warning");
+ 			}
+ 		}
+ 	}
+ 	if (tipo=="Telefono") {
+ 		if (nivel=="P") {
+ 			if (cont_telefono==1) {
+ 				return swal("Lo sentimos ya fue definido un Telefono principal","","warning");
+ 			}
+ 		}
+ 	}
+	var cadena_agregar = "<tr>";
+		cadena_agregar += "<td style = 'width: 300px;word-wrap: break-word;'>"+medio+"</td>";
+		cadena_agregar += "<td style = 'width: 100px;word-wrap: break-word;'>"+tipo+"</td>";
+		cadena_agregar += "<td style = 'text-align: center;width: 100px;word-wrap: break-word;'>"+nivel+"</td>";
+		cadena_agregar += '<td style = "text-align: center;width: 50px;word-wrap: break-word;"><button class="btn btn-danger" onclick="remove(this)">';
+		cadena_agregar += "<i class='fa fa-close'></i><b> </b></button></td>";
+		cadena_agregar += "</tr>";
+		$("#tbody_tabla_medio_comunicacion").append(cadena_agregar);
+	    $("#txtrazonsocial").val("");
+}
+function remove(t){
+    var td = t.parentNode;
+    var tr = td.parentNode;
+    var table = tr.parentNode;
+    table.removeChild(tr);
+}
+function agregar_documento_identidad(){
+	var dni   = $("#txtdni").val();
+	var tipo  = $("#cbm_tipo_documento").val();
+    if (dni.length==0) {
+    	return swal("Falta llenar el nro de documento","","info");
+    }
+	var arreglo_tipo = new Array();
+	$("#tabla_documentoidentidad tbody#tbody_tabla_documentoidentidad tr").each(function(){
+	 	arreglo_tipo.push($(this).find('td').eq(2).text());
+ 	})
+ 	var cont_tipo = 0;
+ 	for (var i = 0; i < arreglo_tipo.length; i++) {
+ 		if (tipo ==arreglo_tipo[i]) {
+ 			return swal("Lo sentimos el tipo de documento "+ tipo +" ya fue asignado para el trabajador","","warning");
+ 		}
+ 	}
+ 	$.ajax({
+		url:'../controlador/trabajador/controlador_buscar_documento_identidad.php',
+		type:'POST',
+		data:{
+			buscar:dni
+		}
+	})
+	.done(function(resp){
+		var data = JSON.parse(resp);
+		if (data.length>0) {
+			swal("El Documento de identidad ya se encuentra registrado en nuestra data","","warning");
+		}else{
+			var cadena_agregar = "<tr>";
+			cadena_agregar += "<td style = 'width: 300px;word-wrap: break-word;'>"+dni+"</td>";
+			cadena_agregar += "<td style = 'text-align: center;width: 100px;word-wrap: break-word;'>"+tipo+"</td>";
+			cadena_agregar += '<td style = "text-align: center;width: 50px;word-wrap: break-word;"><button class="btn btn-danger" onclick="remove(this)">';
+			cadena_agregar += "<i class='fa fa-close'></i><b> </b></button></td>";
+			cadena_agregar += "</tr>";
+			$("#tbody_tabla_documentoidentidad").append(cadena_agregar);
+		}
+		$("#txtdni").val("");
+	})
+}
+function Registrar_trabajador(){
+	var txt_nombre       = $('#txtnombre').val();
+	var txt_apepat       = $('#txtapepat').val();
+	var txt_apemat       = $('#txtapemat').val();
+	var rad_sexo ="";
+	var porsexo=document.getElementsByName("sex");
+    for(var i=0;i<porsexo.length;i++){
+        if(porsexo[i].checked)
+            rad_sexo=porsexo[i].value;
+    }
+	var txt_fechanacimi  = $('#txtfecha_nacimiento').val();
+	$.ajax({
+		url:'../controlador/trabajador/controlador_registrar_datos_trabajador.php',
+		type:'POST',
+		data:{
+			txt_nombre:txt_nombre,
+			txt_apepat:txt_apepat,
+			txt_apemat:txt_apemat,
+			rad_sexo:rad_sexo,
+			txt_fechanacimi:txt_fechanacimi
+		}
+	})
+	.done(function(resp){
+	    if (resp == 0) {
+	      	swal("No se pudo registrar los datos","","error");
+	    }else{
+	    	$('#txtnombre').val("");
+			$('#txtapepat').val("");
+			$('#txtapemat').val("");
+			alert(resp);
+	    	registrar_medio_comunicacion_trabajador(resp);
+	    	registrar_documento_identidad_trabajador(resp);
+	      	swal("Trabajador Registrado con exito","","success")
+	      	.then ( ( value ) =>  { 
+			  $("#contenido_principal").load("trabajador/vista_trabajador_listar.php"); 
+			});
+	    }
+	})
+}
+function registrar_medio_comunicacion_trabajador(id_trabajador){
+	var cod_trabajador = parseInt(id_trabajador);
+	var arreglo_medio = new Array();
+	var arreglo_tipo  = new Array();
+	var arreglo_nivel = new Array();
+	$("#tabla_mediocomunicacion tbody#tbody_tabla_medio_comunicacion tr").each(function(){
+	 	arreglo_medio.push($(this).find('td').eq(0).text());
+	 	arreglo_tipo.push($(this).find('td').eq(1).text());
+	 	arreglo_nivel.push($(this).find('td').eq(2).text());
+ 	})
+ 	var cadena_medio  = arreglo_medio.toString();
+ 	var cadena_tipo   = arreglo_tipo.toString();
+ 	var cadena_nivel  = arreglo_nivel.toString();
+	$.ajax({
+		url:'../controlador/trabajador/controlador_registrar_medio_comunicacion_trabajador.php',
+		type:'POST',
+		data:{
+			codigo:cod_trabajador,
+			medio:cadena_medio,
+			tipo:cadena_tipo,
+			nivel:cadena_nivel
+		}
+	})
+	.done(function(resp){
+		alert(id_trabajador+" - "+ cadena_medio);
+	})
+}
+function registrar_documento_identidad_trabajador(id_trabajador){
+	var cod_trabajador = parseInt(id_trabajador);
+	var arreglo_documento = new Array();
+	var arreglo_tipo      = new Array();
+ 	$("#tabla_documentoidentidad tbody#tbody_tabla_documentoidentidad tr").each(function(){
+	 	arreglo_documento.push($(this).find('td').eq(0).text());
+	 	arreglo_tipo.push($(this).find('td').eq(1).text());
+ 	})
+ 	var cadena_documento  = arreglo_documento.toString();
+ 	var cadena_tipo       = arreglo_tipo.toString();
+	$.ajax({
+		url:'../controlador/trabajador/controlador_registrar_documento_identidad_trabajador.php',
+		type:'POST',
+		data:{
+			codigo:cod_trabajador,
+			dni:cadena_documento,
+			tipo:cadena_tipo
+		}
+	})
+	.done(function(resp){
 	})
 }
