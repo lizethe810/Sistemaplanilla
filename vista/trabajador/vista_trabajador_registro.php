@@ -3,7 +3,7 @@
   <div class="col-lg-12">
     <div class="box box-primary box-solid">
       <div class="box-header with-border"  style="background-color:#34495E;">
-        <h3 class="box-title" style="color:#FFFFFF;"><b>DATOS TRABAJADOR</b></h3>
+        <h3 class="box-title" style="color:#FFFFFF;"><b>DATOS DEL TRABAJADOR</b></h3>
       </div>
       <div class="box-body">
         <div class="col-lg-12">
@@ -67,11 +67,11 @@
   <div class="col-lg-6">
     <div class="box box-default box-solid" style="border-color: #3c3c3c;">
       <div class="box-header with-border"  style="background-color:#3c3c3c;">
-        <h3 class="box-title" style="color:#FFFFFF;"><b>MEDIOS DE COMUNICACIÓN</b></h3>
+        <h3 class="box-title" style="color:#FFFFFF;"><b>MEDIOS DE COMUNICACI&Oacute;N</b></h3>
       </div>
       <div class="box-body">
         <div class="col-lg-8">
-          <label>Descripción:</label>
+          <label>Descripci&oacute;n:</label>
           <div class="input-group">
             <div class="input-group-addon">
               <i class="fa fa-sort-alpha-asc"></i>
@@ -113,7 +113,7 @@
           <table id="tabla_mediocomunicacion" class="display dataTable" style="width: 100%;">
             <thead >
               <tr role="row" class="odd">
-                <th style="text-align: left;width: 300px;word-wrap: break-word;">MEDIO COMUNICACIÓN</th>
+                <th style="text-align: left;width: 300px;word-wrap: break-word;">MEDIO COMUNICACI&Oacute;N</th>
                 <th style="text-align: left;width: 100px;word-wrap: break-word;">TIPO</th>
                 <th style="text-align: center;width: 100px;word-wrap: break-word;">NIVEL</th>
                 <th style="text-align: center;width: 50px;word-wrap: break-word;"></th>
@@ -133,7 +133,7 @@
       <div class="box-body">
         <div class="form-group">
           <div class="col-lg-8">
-            <label>Descripción:</label>
+            <label>Descripci&oacute;n:</label>
             <div class="input-group">
               <div class="input-group-addon">
                 <i class="fa fa-sort-alpha-asc"></i>
@@ -215,8 +215,12 @@
     checkboxClass: 'icheckbox_flat-green',
     radioClass   : 'iradio_flat-orange'
   })
-  $("#txtfecha_nacimiento").datepicker({
-    autoclose:true,
-    todayHighlight: true,
+  $("#txtfecha_nacimiento").bootstrapMaterialDatePicker
+    ({
+      time: false,
+      clearButton: true,
+      lang : 'es',
+      format: 'DD-MM-YYYY',
+
   });
 </script>

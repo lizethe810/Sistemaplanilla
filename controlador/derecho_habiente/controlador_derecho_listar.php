@@ -1,8 +1,7 @@
 <?php
-	require '../../modelo/modelo_familiar.php';
-	$buscar = $_POST["buscar"];
-	$MC = new Modelo_Familiar();
-	$consulta = $MC->listar_familiar($buscar);
+	require '../../modelo/modelo_derechohabiente.php';
+	$MC = new Modelo_Derechohabiente();
+	$consulta = $MC->listar_derechohabiente();
 	if ($consulta) {
 		echo json_encode($consulta);
 	}else{

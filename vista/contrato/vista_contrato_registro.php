@@ -73,7 +73,7 @@
         </div>
         <div class="col-lg-6"><br>
           <label><b>Sueldo:</b></label>
-          <input type="text" id="txtsueldo_contrato"  onkeypress="return filterFloat(event)" class="form-control">
+          <input type="text" id="txtsueldo_contrato" onkeypress="return filterFloat(event,this);" class="form-control">
         </div>
         <div class="col-lg-6"><br>
           <label><b>Estado:</b></label>
@@ -160,14 +160,14 @@
     listar_seguro();
     listar_cargo();
     $('.select2').select2();
-    $("#txtfecha_inicio").focus();
   });
-    $(".fecha").datepicker({
-      autoclose:true,
-      todayHighlight: true,
-  }).on('keypress paste', function (e) {
-    e.preventDefault();
-    return false;
+  $(".fecha").bootstrapMaterialDatePicker
+    ({
+      time: false,
+      clearButton: true,
+      lang : 'es',
+      format: 'DD-MM-YYYY',
+
   });
   function filterFloat(evt,input){
     var key = window.Event ? evt.which : evt.keyCode;

@@ -2,7 +2,7 @@
 	class conexion{
 		private $servidor;
 		private $usuario;
-		private $contraseña;
+		private $contrase単a;
 		private $basedatos;
 		public $conexion;
 		public function __construct(){
@@ -13,7 +13,6 @@
 		}
 		function conectar(){
 			$this->conexion = new mysqli($this->servidor,$this->usuario,$this->contrasena,$this->basedatos);
-			//ñ´s y tildes...
 			$this->conexion->set_charset("utf8");
 		}
 		function cerrar(){

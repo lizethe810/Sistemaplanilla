@@ -468,6 +468,8 @@ function Editar_datos_trabajador(){
             rad_sexo=porsexo[i].value;
     }
 	var txt_fechanacimi  = $('#txtfecha_nacimiento').val();
+	var info = txt_fechanacimi.split('-');
+    txt_fechanacimi = info[2] + '-' + info[1] + '-' + info[0];
 	$.ajax({
 		url:'../controlador/trabajador/controlador_editar_datos_trabajador.php',
 		type:'POST',
@@ -611,6 +613,11 @@ function Registrar_trabajador(){
             rad_sexo=porsexo[i].value;
     }
 	var txt_fechanacimi  = $('#txtfecha_nacimiento').val();
+	var info = txt_fechanacimi.split('-');
+    txt_fechanacimi = info[2] + '-' + info[1] + '-' + info[0];
+	if (txt_nombre.length==0 || txt_apepat.length==0 || txt_apemat.length==0 || txt_fechanacimi.length==0) {
+		return swal("Falta Ingresar datos en el formulario Datos del trabajador","","info");
+	}
 	$.ajax({
 		url:'../controlador/trabajador/controlador_registrar_datos_trabajador.php',
 		type:'POST',
@@ -629,9 +636,21 @@ function Registrar_trabajador(){
 	    	$('#txtnombre').val("");
 			$('#txtapepat').val("");
 			$('#txtapemat').val("");
-			alert(resp);
-	    	registrar_medio_comunicacion_trabajador(resp);
-	    	registrar_documento_identidad_trabajador(resp);
+			var arreglo_nivel = new Array();
+			$("#tabla_mediocomunicacion tbody#tbody_tabla_medio_comunicacion tr").each(function(){
+			 	arreglo_nivel.push($(this).find('td').eq(2).text());
+		 	})
+		 	if (arreglo_nivel.length>0) {
+		 		registrar_medio_comunicacion_trabajador(resp);
+		 	}
+		 	var arreglo_tipo      = new Array();
+		 	$("#tabla_documentoidentidad tbody#tbody_tabla_documentoidentidad tr").each(function(){
+			 	arreglo_tipo.push($(this).find('td').eq(1).text());
+		 	})
+	    	if (arreglo_tipo.length>0) {
+	    		registrar_documento_identidad_trabajador(resp);	
+	    	}
+	    	
 	      	swal("Trabajador Registrado con exito","","success")
 	      	.then ( ( value ) =>  { 
 			  $("#contenido_principal").load("trabajador/vista_trabajador_listar.php"); 
@@ -663,7 +682,6 @@ function registrar_medio_comunicacion_trabajador(id_trabajador){
 		}
 	})
 	.done(function(resp){
-		alert(id_trabajador+" - "+ cadena_medio);
 	})
 }
 function registrar_documento_identidad_trabajador(id_trabajador){

@@ -14,7 +14,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-calendar"></i>
                 </div>
-                <input type="text" class="form-control pull-right fecha" id="txt_fechainicio">
+                <input type="text" class="form-control pull-right fecha  floating-label" id="txt_fechainicio"  placeholder="DD-MM-AA">
               </div>
             </div>
           </div>
@@ -25,7 +25,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-calendar"></i>
                 </div>
-                <input type="text" class="form-control pull-right fecha" id="txt_fechafinal">
+                <input type="text" class="form-control pull-right fecha  floating-label" id="txt_fechafinal"  placeholder="DD-MM-AA">
               </div>
             </div>
           </div>
@@ -211,11 +211,12 @@ $('#modal_editar').on('shown.bs.modal', function () {
       checkboxClass: 'icheckbox_flat-green',
       radioClass   : 'iradio_flat-orange'
   })
-  $(".fecha").datepicker({
-      autoclose:true,
-      todayHighlight: true,
-  }).on('keypress paste', function (e) {
-    e.preventDefault();
-    return false;
+  $(".fecha").bootstrapMaterialDatePicker
+    ({
+      time: false,
+      clearButton: true,
+      lang : 'es',
+      format: 'DD-MM-YYYY',
+
   });
 </script>

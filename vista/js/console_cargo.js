@@ -68,15 +68,15 @@ function Registrar_cargo(){
 		if (resp > 0) {
 			if (resp==1) {
 				$("#modal_registro_cargo").modal('hide');
-				swal("Datos correctamente, nuevo cargo registrado","","success")
+				swal("Mensaje De Confirmacion","Datos correctamente, nuevo cargo registrado","success")
 				.then ( ( value ) =>  {
 				 $("#contenido_principal").load("cargo/vista_cargo_listar.php");
 				 });				
 			}else {
-				swal("Lo sentimos, el cargo ya esta registrado2","","warning")				
+				swal("Mensaje De Advertencia","Lo sentimos, el cargo ya esta registrado","warning")       		
 			}
 		}else{
-  		    swal("Lo sentimos, no se pudo completar registro","","error")
+			swal("Mensaje De Error","Lo sentimos, no se pudo completar el registro","error")
 		}
 	})
 }
@@ -100,12 +100,12 @@ function Modificar_cargo(){
 	.done(function(resp){
 		if (resp > 0) {
       $("#modal_editar_cargo").modal('hide');
-      swal("Datos correctamente modificados","","success")
+	  swal("Mensaje De Confirmacion","Datos correctamente modificacdos")
       .then ( ( value ) =>  {
        $("#contenido_principal").load("cargo/vista_cargo_listar.php");
        });
 		}else{
-      swal("Lo sentimos, no se pudo completar la modificacion","","error")
+			swal("Mensaje De Error","Lo sentimos, no se pudo completar la modificacion","error")
 		}
 	})
 }

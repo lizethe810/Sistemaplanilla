@@ -113,7 +113,7 @@
               </div>
 
              <div class="modal-footer">
-               <button type="submit" class="btn btn-success" onclick="Registrar_cargo()"><i class="fa fa-check"></i>&nbsp;<b>Registrar cargo</b></button>&nbsp;&nbsp;&nbsp;
+               <button type="submit" class="btn btn-success" onclick="Registrar_cargo()"><i class="fa fa-check"></i>&nbsp;<b>Registrar Familiar</b></button>&nbsp;&nbsp;&nbsp;
                <button type="button" class="btn btn-danger pull-right" data-dismiss="modal"><i class="fa fa-close"></i><b>&nbsp;Close</b></button>
              </div>
       </div>
@@ -182,7 +182,7 @@
                </div>
 
               <div class="modal-footer">
-                <button type="submit" class="btn btn-success" onclick="Modificar_Familiar()"><i class="fa fa-check"></i>&nbsp;<b>Modificar cargo</b></button>&nbsp;&nbsp;&nbsp;
+                <button type="submit" class="btn btn-success" onclick="Modificar_Familiar()"><i class="fa fa-check"></i>&nbsp;<b>Modificar Familiar</b></button>&nbsp;&nbsp;&nbsp;
                 <button type="button" class="btn btn-danger pull-right" data-dismiss="modal"><i class="fa fa-close"></i><b>&nbsp;Close</b></button>
               </div>
        </div>

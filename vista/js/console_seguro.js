@@ -55,7 +55,7 @@ function Registrar_seguro(){
 	var seguro = $("#txtseguro").val();
 	var estatus = $("#combo_estatus").val();
   if (seguro.length==0) {
-      return       swal("LLene todos los campos","","error");
+	return   swal("Mensaje De Advertencia","Porfavor llene los campos vacios","warning");
   }
 	$.ajax({
 		url:'../controlador/seguro/controlador_seguro_registro.php',
@@ -70,7 +70,7 @@ function Registrar_seguro(){
 		if (resp > 0) {
 			if (resp==1) {
 				$("#modal_editar_seguro").modal('hide');
-				swal("Datos correctamente, seguro registrado","","success")
+				swal("Mensaje De Confirmacion","Datos correctamente, nuevo seguro registrado","success")     
 				.then ( ( value ) =>  {
 				$("#contenido_principal").load("seguro/vista_seguro_listar.php");
 				   });				
@@ -78,7 +78,7 @@ function Registrar_seguro(){
 				swal("Lo sentimos, el seguro ya esta registrado","","warning")				
 			}
 		}else{
-      swal("Lo sentimos, no se pudo completar registro","","error")
+			swal("Mensaje De Error","Lo sentimos, no se pudo completar el registro","error")
 		}
 	})
 }
@@ -102,12 +102,12 @@ function Modificar_seguro(){
 	.done(function(resp){
 		if (resp > 0) {
 			$("#modal_editar_seguro").modal('hide');
-			swal("Datos correctamente modificados","","success")
+			swal("Mensaje De Confirmacion","Datos correctamente, modificados","success")
 			.then ( ( value ) =>  {
 			$("#contenido_principal").load("seguro/vista_seguro_listar.php");
        });
 		}else{
-      swal("Lo sentimos, no se pudo completar la modificacion","","error")
+			swal("Mensaje De Error","Lo sentimos, no se pudo completar la modificacion","error")
 		}
 	})
 }

@@ -158,12 +158,15 @@
                 </span>
               </a>
               <ul  class="treeview-menu">
+                <li><a href="#" onclick="cargar_contenido('contenido_principal','Planilla/vista_planilla_listar.php')"><i class="fa fa-chevron-circle-right"></i>Planilla</a></li>
+                <li><a href="#" onclick="cargar_contenido('contenido_principal','contrato/vista_contrato_listar.php')"><i class="fa fa-chevron-circle-right"></i>Contrato</a>       
+                <li><a href="#" onclick="cargar_contenido('contenido_principal','derecho_habiente/vista_derecho_habiente_listar.php')"><i class="fa fa-chevron-circle-right"></i>Derecho De Habiente</a>  
                 <li><a href="#" onclick="cargar_contenido('contenido_principal','trabajador/vista_trabajador_listar.php')"><i class="fa fa-chevron-circle-right"></i>Trabajadores</a>  
                 <li><a href="#" onclick="cargar_contenido('contenido_principal','familiar/vista_familiar_listar.php')"><i class="fa fa-chevron-circle-right"></i>Familiar</a>      
                 <li><a href="#" onclick="cargar_contenido('contenido_principal','cargo/vista_cargo_listar.php')"><i class="fa fa-chevron-circle-right"></i>Cargo</a></li>
                 <li><a href="#" onclick="cargar_contenido('contenido_principal','seguro/vista_seguro_listar.php')"><i class="fa fa-chevron-circle-right"></i>Seguro</a></li>
                 <li><a href="#" onclick="cargar_contenido('contenido_principal','area/vista_area_listar.php')"><i class="fa fa-chevron-circle-right"></i>&Aacute;rea</a></li>     
-                <li><a href="#" onclick="cargar_contenido('contenido_principal','tipo_contrato/vista_tipo_contrato_listar.php')"><i class="fa fa-chevron-circle-right"></i>Tipo Contrato</a></li>                                
+                <li><a href="#" onclick="cargar_contenido('contenido_principal','tipo_contrato/vista_tipo_contrato_listar.php')"><i class="fa fa-chevron-circle-right"></i>Tipo Contrato</a></li>                                 
                </ul>
             </li>           
             <?php

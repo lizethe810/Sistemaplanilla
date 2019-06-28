@@ -3,7 +3,6 @@ function abrirModalusuario(){
 	$('#modal_cuenta').modal({backdrop: 'static', keyboard: false})
 	$("#modal_cuenta").modal("show");
 }
-
 function Editar_cuenta(){
 	var usuario = $("#txtusuario").val();
 	var actual  = $("#txtactual").val();
@@ -18,7 +17,7 @@ function Editar_cuenta(){
 	}
 	$.ajax({
 		type:'POST',
-		url:'../controlador/usuario/trolador_tipo_contrato_modificar.php',
+		url:'../controlador/usuario/controlador_cuenta_actualizar.php',
 		data:{
 			_usuario:usuario,
 			_actual:actual,
@@ -41,7 +40,6 @@ function Limpiar_POST_cuenta(){
 	$("#txtrepetir").val("");
 	traer_administrador();
 }
-
 function traer_administrador(){
 	var codigo_personal = $("#txtcodigo_principal_usuario").val();
 	$.ajax({
@@ -59,13 +57,11 @@ function traer_administrador(){
 		}
 	})
 }
-
 function AbrirModalTrabajador(){
 	listar_trabajador('');
 	$('#modal_ver_trabajadores').modal({backdrop: 'static', keyboard: false})
 	$("#modal_ver_trabajadores").modal("show");
 }
-
 function listar_trabajador(buscar){
 	var cadena = '<table table id="tabla_trabajador" class="display dataTable" style="width: 100%;" role="grid" aria-describedby="example_info">'+
                  '<thead >'+
@@ -139,13 +135,11 @@ var idioma_espanol = {
 			"sSortDescending": ": Activar para ordenar la columna de manera descendente"
 	}
 }
-
 function EnviarDatosTrabajador(id,nombre,apepat,apemat){
 	$("#txt_idtrabajador").val(id);
 	$("#txt_datostrabajador").val(nombre+" "+apepat+" "+apemat);
 	$("#modal_ver_trabajadores").modal("hide");
 }
-
 function RegistrarUsuario(){
 	var usuario       = $("#txtusuario").val();
 	var clave		  = $("#txtcontra1").val();

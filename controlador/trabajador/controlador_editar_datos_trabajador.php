@@ -1,11 +1,11 @@
 <?php
 	include '../../modelo/modelo_trabajador.php';
-	$id_trabajador    =  $_POST["txt_idtrabajador"];
-	$txt_nombre       =  $_POST["txt_nombre"];
-	$txt_apepat       =  $_POST["txt_apepat"];
-	$txt_apemat       =  $_POST["txt_apemat"];
-	$rad_sexo         =  $_POST["rad_sexo"];
-	$txt_fechanacimi  = date("Y/m/d", strtotime($_POST["txt_fechanacimi"]));
+	$id_trabajador    = htmlspecialchars($_POST['txt_idtrabajador'],ENT_QUOTES,'UTF-8');
+	$txt_nombre       = htmlspecialchars($_POST['txt_nombre'],ENT_QUOTES,'UTF-8');
+	$txt_apepat       = htmlspecialchars($_POST['txt_apepat'],ENT_QUOTES,'UTF-8');
+	$txt_apemat       = htmlspecialchars($_POST['txt_apemat'],ENT_QUOTES,'UTF-8');
+	$rad_sexo         = htmlspecialchars($_POST['rad_sexo'],ENT_QUOTES,'UTF-8');
+	$txt_fechanacimi  = htmlspecialchars($_POST['txt_fechanacimi'],ENT_QUOTES,'UTF-8');
 	$MC = new Modelo_trabajador();
 	$consulta = $MC->Editar_datos_trabajador($id_trabajador,$txt_nombre,$txt_apepat,$txt_apemat,$rad_sexo,$txt_fechanacimi);
 	echo $consulta;

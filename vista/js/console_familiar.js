@@ -1,4 +1,5 @@
   function listar_familiar(){
+    var buscar="%";
     var table = $("#tabla_familiar").DataTable({
       "bLengthChange":false,
       "ordering":false,
@@ -7,7 +8,10 @@
       "select":false,
       "ajax":{
         "method":"POST",
-        "url":"../controlador/familiar/controlador_familiar_listar.php"
+        "url":"../controlador/familiar/controlador_familiar_listar.php",
+        data:{
+          buscar:buscar
+        }
       },
       "columns":[
           {"defaultContent":""},
@@ -141,7 +145,6 @@
         }
     })
     .done(function(resp){
-      alert(resp);
         if (resp > 0) {
           if (resp==1) {
             $("#modal_editar_familiar").modal('hide');
@@ -154,7 +157,7 @@
           }
 
         }else{
-          swal("Mensaje De Error","Lo sentimos, no se pudo completar el registro","error")
+          swal("Mensaje De Error","Lo sentimos, no se pudo completar la modificacion","error")
         }
     })
 }

@@ -45,8 +45,21 @@ function listar_contratos(){
            $("#div_tabla_contrato").html(cadena_principal);
     var txt_fechainicio = $("#txt_fechainicio").val();
     var txt_fechafinal  = $("#txt_fechafinal").val();
-	var table = $("#tabla_contrato_principal").DataTable({
-		"searching":false,
+    
+    if (txt_fechainicio.length!==0) {
+    	var info = txt_fechainicio.split('-');
+    	 txt_fechainicio = info[2] + '-' + info[1] + '-' + info[0];
+    }else{
+    	txt_fechainicio='';
+    }
+    
+    if (txt_fechafinal.length!==0) {
+    	var info1 = txt_fechafinal.split('-');
+    	 txt_fechafinal = info1[2] + '-' + info1[1] + '-' + info1[0];
+    }else{
+    	txt_fechafinal='';
+    }
+    var table = $("#tabla_contrato_principal").DataTable({
 		"bLengthChange":false,
 		"ordering":false,
 		"pageLength":10,
@@ -116,6 +129,12 @@ var obtener_dato_editar_conceptos_fijos = function(tbody, table){
 		$('#txtsueldo').val(data.contrato_sueldo);
 		$('#modal_ver_conceptos_fijos').modal({backdrop: 'static', keyboard: false})
 		$("#modal_ver_conceptos_fijos").modal("show");
+		if (data.contrato_estatus=="Anulado") {
+			$("#btn_registrar_conceptofijo").attr("disabled",true);
+		}else{
+			$("#btn_registrar_conceptofijo").attr("disabled",false);
+		}
+		
 		listar_tipo_conceptosFijos(data.contrato_codigo);
 		listar_concepto_fijo_contrato(data.contrato_codigo);
 	});
@@ -191,11 +210,19 @@ function listar_concepto_fijo_contrato(id_contrato){
 			}
 		},
 		"columns":[
-				{"data":"tipoconcepto_nombre"},
-				{"data":"tipoconcepto_porcentaje"},
-				{"data":"conceptofijo_monto"},
-				{"defaultContent": "<button style='font-size:13px;' type='button' class='eliminar_conceptofijo btn btn-danger'><span class='fa fa-trash'></span></button>"},
-
+			{"data":"tipoconcepto_nombre"},
+			{"data":"tipoconcepto_porcentaje"},
+			{"data":"conceptofijo_monto"},
+			{"data":"contrato_estatus",
+				render: function (data, type, row ) {
+				    if (data=="Anulado") {
+				        return "<button style='font-size:13px;' disabled type='button' class='eliminar_conceptofijo btn btn-default'><span class='fa fa-trash'></span></button>";
+				    }
+				    if (data=="Activo") {
+				        return "<button style='font-size:13px;' type='button' class='eliminar_conceptofijo btn btn-danger'><span class='fa fa-trash'></span></button>";
+				    }
+				}
+			},
 		],
 		"fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
 	        $($(nRow).find("td")[0]).css('text-align', 'center' );
@@ -361,6 +388,10 @@ function Editar_dato_contrato(){
 	var cbm_seguro   = $('#cbm_seguro').val();
 	var cbm_cargo    = $('#cbm_cargo').val();
 	var cbm_estado   = $('#cbm_estado').val();
+	var info = fecha_inicio.split('-');
+    var fecha_inicio = info[2] + '-' + info[1] + '-' + info[0];
+    var info1 = fecha_final.split('-');
+    var fecha_final = info1[2] + '-' + info1[1] + '-' + info1[0];
 	$.ajax({
 		url:'../controlador/contrato/controlador_contrato_editar.php',
 		type:'POST',
@@ -503,6 +534,10 @@ function Registrar_Contrato(){
 	var cbm_cargo    = $('#cbm_cargo').val();
 	var txt_sueldo   = $('#txtsueldo_contrato').val();
 	var id_trabajador= $('#txt_idempleado').val();
+	var info = fecha_inicio.split('-');
+    var fecha_inicio = info[2] + '-' + info[1] + '-' + info[0];
+    var info1 = fecha_final.split('-');
+    var fecha_final = info1[2] + '-' + info1[1] + '-' + info1[0];
 	$.ajax({
 		url:'../controlador/contrato/controlador_contrato_registrar.php',
 		type:'POST',

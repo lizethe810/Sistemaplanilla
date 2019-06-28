@@ -32,9 +32,9 @@ function listar_area(){
             cell.innerHTML = i+1;
           } );
           }).draw();
-  }
+}
   
-  var obtener_dato_area = function(tbody, table){
+var obtener_dato_area = function(tbody, table){
   
       $(tbody).on("click", "button.editar", function(){
             $('#modal_editar_area').modal({backdrop: 'static', keyboard: false})
@@ -45,18 +45,18 @@ function listar_area(){
             status 		= $("#combo_estatuseditar").val(data.area_estatus).trigger("change");
   
       });
-  }
+}
   
-  function Abrirmodalregistro(){
+function Abrirmodalregistro(){
         $('#modal_registro_area').modal({backdrop: 'static', keyboard: false})
         $("#modal_registro_area").modal('show');
-  }
+}
   
-  function Registrar_Area(){
+function Registrar_Area(){
       var area = $("#txtarea").val();
       var estatus = $("#combo_estatus").val();
     if (area.length==0) {
-        return       swal("LLene todos los campos","","error");
+      return   swal("Mensaje De Advertencia","Porfavor llene los campos vacios","warning");
     }
       $.ajax({
           url:'../controlador/area/controlador_area_registro.php',
@@ -70,26 +70,26 @@ function listar_area(){
           if (resp > 0) {
             if (resp==1) {
               $("#modal_registro_area").modal('hide');
-              swal("Datos correctamente, nueva area registrada","","success")
+              swal("Mensaje De Confirmacion","Datos correctamente, nuevo area registrada","success")            
               .then ( ( value ) =>  {
               $("#contenido_principal").load("area/vista_area_listar.php");
               });             
             } else {
-              swal("Lo sentimos, el area ya esta registrada","","warning")             
+              swal("Mensaje De Advertencia","Lo sentimos, el area ya esta registrado","warning")                  
             }
 
           }else{
-             swal("Lo sentimos, no se pudo completar registro","","error")
+          swal("Mensaje De Error","Lo sentimos, no se pudo completar el registro","error")
           }
       })
-  }
+}
   
-  function Modificar_Area(){
+function Modificar_Area(){
     var idarea = $("#txtidarea").val();
     var area = $("#txtareaeditar").val();
       var estatus = $("#combo_estatuseditar").val();
     if (area.length==0) {
-        return       swal("LLene todos los campos","","error");
+      return   swal("Mensaje De Advertencia","Porfavor llene los campos vacios","warning");
     }
       $.ajax({
           url:'../controlador/area/controlador_area_modificar.php',
@@ -103,17 +103,17 @@ function listar_area(){
       .done(function(resp){
           if (resp > 0) {
         $("#modal_editar_area").modal('hide');
-        swal("Datos correctamente modificados","","success")
+        swal("Mensaje De Confirmacion","Datos correctamente, modificados","success")
         .then ( ( value ) =>  {
          $("#contenido_principal").load("area/vista_area_listar.php");
          });
           }else{
-        swal("Lo sentimos, no se pudo completar la modificacion","","error")
+            swal("Mensaje De Error","Lo sentimos, no se pudo completar la modificacion","error")
           }
       })
-  }
+}
   
-  var idioma_espanol = {
+var idioma_espanol = {
       select: {
         rows: "%d fila seleccionada"
       },
@@ -139,5 +139,5 @@ function listar_area(){
               "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
               "sSortDescending": ": Activar para ordenar la columna de manera descendente"
       }
-  }
+}
   

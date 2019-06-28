@@ -10,8 +10,8 @@
 			$this->conexion->conectar();
 		}
 
-		function listar_familiar(){
-			$sql = "call SP_FAMILIAR_LISTAR";
+		function listar_familiar($buscar){
+			$sql = "call SP_FAMILIAR_LISTAR('$buscar')";
 
 			$arreglo = array();
 			if ($consulta = $this->conexion->conexion->query($sql)) {

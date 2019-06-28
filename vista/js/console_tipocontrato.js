@@ -76,7 +76,7 @@ function listar_tipocontrato(){
                 swal("Mensaje De Advertencia","Lo sentimos, el tipo de contrato ya esta registrado","warning");				
               }
           }else{
-                swal("Lo sentimos, no se pudo completar registro","","error")
+            swal("Mensaje De Error","Lo sentimos, no se pudo completar el registro","error")
           }
       })
   }
@@ -105,7 +105,7 @@ function listar_tipocontrato(){
          $("#contenido_principal").load("tipo_contrato/vista_tipo_contrato_listar.php");
          });
           }else{
-        swal("Lo sentimos, no se pudo completar la modificacion","","error")
+            swal("Mensaje De Error","Lo sentimos, no se pudo completar la modificacion","error")
           }
       })
   }
